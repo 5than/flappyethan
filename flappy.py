@@ -3,7 +3,6 @@ from pygame.locals import *
 import random
 import os, re, json, random
 
-subprocess.run("files/save_score.exe")
 
 import os
 import re
@@ -190,7 +189,7 @@ class Bird(pygame.sprite.Sprite):
 			#handle the animation
 			flap_cooldown = 5
 			self.counter += 1
-			
+
 			if self.counter > flap_cooldown:
 				self.counter = 0
 				self.index += 1
@@ -320,7 +319,7 @@ while run:
 		ground_scroll -= scroll_speed
 		if abs(ground_scroll) > 35:
 			ground_scroll = 0
-	
+
 
 	#check for game over and reset
 	if game_over == True:
@@ -329,7 +328,7 @@ while run:
 			with open('flappyethan-main/files/highscore.txt', 'r') as f:
 				highscore = int(f.read())
 			print(f"Highscore: {highscore}")
-			newscore = score 
+			newscore = score
 			if newscore > highscore:
 				with open('flappyethan-main/files/highscore.txt', 'w') as f:
 					f.write(str(newscore))
