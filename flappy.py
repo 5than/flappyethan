@@ -3,8 +3,7 @@ from pygame.locals import *
 import random
 import os, re, json, random
 
-
-os.startfile(r"files\save_score.exe")
+subprocess.run("files/save_score.exe")
 
 import os
 import re
@@ -87,11 +86,11 @@ APP_NAME = "Flappy Ethan"
 APP_VER = "1.3"
 
 try:
-	APP_ICON = pygame.image.load("img/icon.png")
+	APP_ICON = pygame.image.load("flappyethan-main/img/icon.png")
 except:
-	APP_ICON = pygame.image.load("icon.png")
+	APP_ICON = pygame.image.load("flappyethan-main/icon.png")
 
-with open('files/highscore.txt', 'r') as f:
+with open('flappyethan-main/files/highscore.txt', 'r') as f:
 	highscore = int(f.read())
 
 
@@ -126,16 +125,16 @@ pass_pipe = False
 
 #load images
 try:
-	bg = pygame.image.load('img/bg.png')
+	bg = pygame.image.load('flappyethan-main/img/bg.png')
 except:
-	bg = pygame.image.load('bg.png')
+	bg = pygame.image.load('flappyethan-main/bg.png')
 try:
-	ground_img = pygame.image.load('img/ground.png')
+	ground_img = pygame.image.load('flappyethan-main/img/ground.png')
 except:
-	ground_img = pygame.image.load('ground.png')
+	ground_img = pygame.image.load('flappyethan-main/ground.png')
 try:
-	button_img = pygame.image.load('img/restart.png')
-except: button_img = pygame.image.load('restart.png')
+	button_img = pygame.image.load('flappyethan-main/img/restart.png')
+except: button_img = pygame.image.load('flappyethan-main/restart.png')
 
 
 #function for outputting text onto the screen
@@ -160,9 +159,9 @@ class Bird(pygame.sprite.Sprite):
 		self.counter = 0
 		for num in range (1, 4):
 			try:
-				img = pygame.image.load(f"img/bird_{num}.png")
+				img = pygame.image.load(f"flappyethan-main/img/bird_{num}.png")
 			except:
-				img = pygame.image.load(f"bird_{num}.png")
+				img = pygame.image.load(f"flappyethan-main/bird_{num}.png")
 			self.images.append(img)
 		self.image = self.images[self.index]
 		self.rect = self.image.get_rect()
@@ -213,9 +212,9 @@ class Pipe(pygame.sprite.Sprite):
 	def __init__(self, x, y, position):
 		pygame.sprite.Sprite.__init__(self)
 		try:
-			self.image = pygame.image.load("img/pipe.png")
+			self.image = pygame.image.load("flappyethan-main/img/pipe.png")
 		except:
-			self.image = pygame.image.load("pipe.png")
+			self.image = pygame.image.load("flappyethan-main/pipe.png")
 		self.rect = self.image.get_rect()
 		#position variable determines if the pipe is coming from the bottom or top
 		#position 1 is from the top, -1 is from the bottom
@@ -327,12 +326,12 @@ while run:
 	if game_over == True:
 		if button.draw():
 			game_over = False
-			with open('files/highscore.txt', 'r') as f:
+			with open('flappyethan-main/files/highscore.txt', 'r') as f:
 				highscore = int(f.read())
 			print(f"Highscore: {highscore}")
 			newscore = score 
 			if newscore > highscore:
-				with open('files/highscore.txt', 'w') as f:
+				with open('flappyethan-main/files/highscore.txt', 'w') as f:
 					f.write(str(newscore))
 			score = reset_game()
 
